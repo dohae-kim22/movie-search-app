@@ -12,8 +12,33 @@ html {
 }
 
 body {
-  font-family: "Roboto", "sans-serif";
+  font-family: "Roboto", sans-serif;
   background-color: var(--color-black);
   color: var(--color-white);
   line-height: 1.4;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 0 60px;
+}
+
+.headline h1 {
+  font-family: "Oswald", sans-serif;
+  font-size: 80px;
+  line-height: 1;
+}
+
+.headline h1 span {
+  color: var(--color-primary);
+}
+
+.headline p {
+  color: var(--color-white-30);
+  margin: 40px 0;
+}
+
+.headline p span {
+  font-weight: 700;
 }
