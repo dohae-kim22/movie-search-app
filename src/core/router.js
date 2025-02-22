@@ -27,7 +27,7 @@ function routeRender(routes) {
     new RegExp(`${route.path}/?$`).test(hash)
   );
   //   routerView.innerHTML = "";
-  routerView.appendChild(new currentRoute.component().el);
+  routerView.append(new currentRoute.component().el);
 
   // Reset scroll position after route change
   window.scrollTo(0, 0);

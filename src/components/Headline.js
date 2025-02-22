@@ -1,4 +1,4 @@
-import { Component } from "../core/Component";
+import { Component } from "../core/component";
 
 export default class Headline extends Component {
   render() {
