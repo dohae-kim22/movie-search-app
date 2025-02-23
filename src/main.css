@@ -21,8 +21,8 @@ body {
 .btn {
   height: 50px;
   cursor: pointer;
-  background-color: var(--color-area);
-  color: var(--color-white);
+  background-color: var(--color-primary);
+  color: var(--color-black);
   border: none;
   border-radius: 4px;
   outline: none;
@@ -34,14 +34,6 @@ body {
 
 .btn:hover {
   background-color: var(--color-hover);
-}
-
-.btn-primary {
-  background-color: var(--color-primary);
-  color: var(--color-black);
-}
-
-.btn-primary:hover {
   color: var(--color-white);
 }
 
@@ -90,4 +82,75 @@ body {
 .search button {
   flex-grow: 1;
   max-width: 150px;
+}
+
+.movie-list {
+  background-color: var(--color-area);
+  border-radius: 4px;
+  margin-top: 30px;
+  padding: 20px;
+}
+
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.movie {
+  width: 200px;
+  height: 300px;
+  background-size: cover;
+  position: relative;
+  background-color: var(--color-black);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.movie:hover::after {
+  content: "";
+  position: absolute;
+  border: 6px solid var(--color-primary);
+  border-radius: 4px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.movie .info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #0e111b4d;
+  backdrop-filter: blur(10px);
+  padding: 14px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.movie .info .year {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.movie .info .title {
+  color: var(--color-white);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.view-more {
+  width: 100%;
+  max-width: 300px;
+  margin: 20px auto;
+  display: block;
+}
+
+.view-more.hide {
+  display: none;
 }

@@ -6,7 +6,7 @@ export default class Search extends Component {
     this.el.classList.add("search");
     this.el.innerHTML = /* html */ `
     <input placeholder='Enter movie title...'/>
-    <button class="btn btn-primary">Search!</button>
+    <button class="btn">Search!</button>
     `;
 
     const inputEl = this.el.querySelector("input");
