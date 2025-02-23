@@ -1,4 +1,4 @@
-export function createRouter(routes) {
+export default function createRouter(routes) {
   return function () {
     window.addEventListener("popstate", () => {
       routeRender(routes);

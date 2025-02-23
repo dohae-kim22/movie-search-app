@@ -1,4 +1,4 @@
-export class Component {
+export default class Component {
   constructor(payload = {}) {
     const { tagName = "div", props = {}, state = {} } = payload;
 

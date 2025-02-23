@@ -1,4 +1,4 @@
-import { createRouter } from "../core/router";
+import createRouter from "../core/router";
 import Home from "./Home";
 import Movie from "./Movie";
 import About from "./About";
