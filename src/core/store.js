@@ -18,7 +18,7 @@ export default class Store {
   }
   // Method to subscribe to state changes
   subscribe(key, callback) {
-    if (Array.isArray(this.observers[key])) {
+    if (!Array.isArray(this.observers[key])) {
       this.observers[key] = [];
     }
     this.observers[key].push(callback);

@@ -11,5 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "parcel": "^2.13.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
   }
 }
