@@ -6,10 +6,7 @@ export default class MovieListMore extends Component {
     super({ tagName: "button" });
 
     movieStore.subscribe("pageMax", () => {
-      const { page, pageMax } = movieStore.state;
-      page < pageMax
-        ? this.el.classList.remove("hide")
-        : this.el.classList.add("hide");
+      this.updateButtonVisibility();
     });
   }
 
@@ -20,5 +17,14 @@ export default class MovieListMore extends Component {
     this.el.addEventListener("click", async () => {
       await searchMovies(movieStore.state.page + 1);
     });
+
+    this.updateButtonVisibility();
+  }
+
+  updateButtonVisibility() {
+    const { page, pageMax } = movieStore.state;
+    page < pageMax
+      ? this.el.classList.remove("hide")
+      : this.el.classList.add("hide");
   }
 }

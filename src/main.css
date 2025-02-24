@@ -57,7 +57,7 @@ body {
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .container {
@@ -112,6 +112,12 @@ body {
   border-radius: 4px;
   margin-top: 30px;
   padding: 20px;
+}
+
+.movie-list .message {
+  text-align: center;
+  color: var(--color-primary);
+  font-size: 18px;
 }
 
 .movies {
@@ -172,4 +178,44 @@ body {
   max-width: 300px;
   margin: 20px auto;
   display: block;
+}
+
+.movie-detail {
+  display: flex;
+  gap: 70px;
+  color: var(--color-white-50);
+}
+
+.movie-detail .poster {
+  flex-shrink: 0;
+  width: 500px;
+  height: 750px;
+  background-size: cover;
+  border-radius: 10px;
+  background-color: var(--color-area);
+}
+
+.movie-detail .spec {
+  flex-grow: 1;
+}
+
+.movie-detail .title {
+  font-family: "Oswald", sans-serif;
+  font-size: 70px;
+  line-height: 1;
+  color: var(--color-white);
+  margin-bottom: 30px;
+}
+
+.movie-detail .labels {
+  color: var(--color-primary);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.movie-detail h3 {
+  font-family: "Oswald", sans-serif;
+  font-size: 20px;
+  color: var(--color-white);
+  margin: 24px 0 6px;
 }
