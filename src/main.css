@@ -308,3 +308,38 @@ header nav ul li a.active {
   color: var(--color-white);
   margin: 24px 0 6px;
 }
+
+.about .photo {
+  width: 230px;
+  height: 230px;
+  background-size: cover;
+  margin: 0 auto 20px;
+}
+
+.about .name {
+  font-family: "Oswald", sans-serif;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.about p {
+  line-height: 1.5;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.about a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.about a:hover {
+  text-decoration: underline;
+}
+
+.not-found h1 {
+  font-size: 70px;
+  font-weight: 700;
+  color: var(--color-white-10);
+  text-align: center;
+}
