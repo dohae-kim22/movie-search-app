@@ -5,9 +5,20 @@ export default class Movie extends Component {
   async render() {
     this.el.classList.add("container", "movie-detail");
 
+    // Skeleton UI
+    this.el.innerHTML = /* html */ `
+    <div class="poster skeleton"></div>
+    <div class="specs">
+      <div class="title skeleton"></div>
+      <div class="labels skeleton"></div>
+      <div class="plot skeleton"></div>
+    </div>
+  `;
+
     await getMovieDetails(history.state.id);
     const { movie } = movieStore.state;
     const bigPoster = movie.Poster.replace("SX300", "SX700");
+    this.el.innerHTML = "";
 
     // Poster
     const posterDiv = document.createElement("div");
@@ -17,7 +28,7 @@ export default class Movie extends Component {
 
     // Specs container
     const specsDiv = document.createElement("div");
-    specsDiv.classList.add("spec");
+    specsDiv.classList.add("specs");
     this.el.append(specsDiv);
 
     // Title
@@ -29,17 +40,29 @@ export default class Movie extends Component {
     // Labels (Released Date, Runtime, Country)
     const labelsDiv = document.createElement("div");
     labelsDiv.classList.add("labels");
-    labelsDiv.innerHTML = /* html */ `
-      <span>${movie.Released}</span>
-      &nbsp/&nbsp
-      <span>${movie.Runtime}</span>
-      &nbsp/&nbsp
-      <span>${movie.Country}</span>
-    `;
-    specsDiv.append(labelsDiv);
+    const labels = [];
+
+    if (movie.Released && movie.Released !== "N/A") {
+      labels.push(movie.Released);
+    }
+
+    if (movie.Runtime && movie.Runtime !== "N/A") {
+      labels.push(movie.Runtime);
+    }
+
+    if (movie.Country && movie.Country !== "N/A") {
+      labels.push(movie.Country);
+    }
+
+    if (labels.length > 0) {
+      labelsDiv.innerHTML = /* html */ `
+        <span>${labels.join(" &nbsp;/&nbsp; ")}</span>
+      `;
+      specsDiv.append(labelsDiv);
+    }
 
     // Plot
-    if (movie.Plot !== "N/A") {
+    if (movie.Plot && movie.Plot !== "N/A") {
       const plotDiv = document.createElement("div");
       plotDiv.classList.add("plot");
       plotDiv.textContent = movie.Plot;
@@ -47,7 +70,7 @@ export default class Movie extends Component {
     }
 
     // Ratings
-    if (movie.Ratings !== "N/A") {
+    if (movie.Ratings?.length) {
       const ratingDiv = document.createElement("div");
       ratingDiv.innerHTML = /* html */ `<h3>Ratings</h3>`;
       movie.Ratings.map((rating) => {
@@ -59,7 +82,7 @@ export default class Movie extends Component {
     }
 
     // Actors
-    if (movie.Actors !== "N/A") {
+    if (movie.Actors && movie.Actors !== "N/A") {
       const actorDiv = document.createElement("div");
       actorDiv.innerHTML = /* html */ `
         <h3>Actors</h3>
@@ -69,7 +92,7 @@ export default class Movie extends Component {
     }
 
     // Director
-    if (movie.Director !== "N/A") {
+    if (movie.Director && movie.Director !== "N/A") {
       const directorDiv = document.createElement("div");
       directorDiv.innerHTML = /* html */ `
         <h3>Director</h3>
@@ -79,7 +102,7 @@ export default class Movie extends Component {
     }
 
     // Writer
-    if (movie.Writer !== "N/A") {
+    if (movie.Writer && movie.Writer !== "N/A") {
       const writerDiv = document.createElement("div");
       writerDiv.innerHTML = /* html */ `
         <h3>Writer</h3>
@@ -89,7 +112,7 @@ export default class Movie extends Component {
     }
 
     // Production
-    if (movie.Production !== "N/A") {
+    if (movie.Production && movie.Production !== "N/A") {
       const productionDiv = document.createElement("div");
       productionDiv.innerHTML = /* html */ `
         <h3>Production</h3>
@@ -99,7 +122,7 @@ export default class Movie extends Component {
     }
 
     // Awards
-    if (movie.Awards !== "N/A") {
+    if (movie.Awards && movie.Awards !== "N/A") {
       const awardDiv = document.createElement("div");
       awardDiv.innerHTML = /* html */ `
         <h3>Awards</h3>
@@ -109,7 +132,7 @@ export default class Movie extends Component {
     }
 
     // Genre
-    if (movie.Genre !== "N/A") {
+    if (movie.Genre && movie.Genre !== "N/A") {
       const genreDiv = document.createElement("div");
       genreDiv.innerHTML = /* html */ `
         <h3>Genre</h3>
@@ -119,7 +142,7 @@ export default class Movie extends Component {
     }
 
     // Language
-    if (movie.Language !== "N/A") {
+    if (movie.Language && movie.Language !== "N/A") {
       const languageDiv = document.createElement("div");
       languageDiv.innerHTML = /* html */ `
         <h3>Language</h3>
@@ -129,7 +152,7 @@ export default class Movie extends Component {
     }
 
     // BoxOffice
-    if (movie.BoxOffice !== "N/A") {
+    if (movie.BoxOffice && movie.BoxOffice !== "N/A") {
       const boxOfficeDiv = document.createElement("div");
       boxOfficeDiv.innerHTML = /* html */ `
         <h3>BoxOffice</h3>
@@ -139,7 +162,7 @@ export default class Movie extends Component {
     }
 
     // Rated
-    if (movie.Rated !== "N/A") {
+    if (movie.Genre && movie.Rated !== "N/A") {
       const ratedDiv = document.createElement("div");
       ratedDiv.innerHTML = /* html */ `
         <h3>Rated</h3>

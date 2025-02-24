@@ -9,7 +9,7 @@ export default class MovieItem extends Component {
     this.el.classList.add("movie");
     this.el.innerHTML = /* html */ `
         <div class="info">
-            <div class="year">${this.props.Year}</div>
+            <div class="year">${this.props.Year.trim().split("–")[0]}</div>
             <div class="title">${this.props.Title}</div>
         </div>
     `;
