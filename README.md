@@ -16,6 +16,22 @@ The project is available in two versions: **JavaScript (JS)** and **TypeScript (
 
 You can check out the live demo of this project hosted on [Vercel](https://movie-search-app-eight-khaki.vercel.app/#/).
 
+## Screenshots
+
+Here are some screenshots of the application:
+
+### Home Page:
+
+![Home Page](https://raw.githubusercontent.com/dohae-kim22/movie-search-app/refs/heads/main/asset/screenshot/homepage.png)
+
+### Search Results:
+
+![Search Results](https://raw.githubusercontent.com/dohae-kim22/movie-search-app/refs/heads/main/asset/screenshot/search-result.png)
+
+### Movie Detail Page:
+
+![Movie Detail Page](https://raw.githubusercontent.com/dohae-kim22/movie-search-app/refs/heads/main/asset/screenshot/movie-detail.png)
+
 ## Technologies Used
 
 - **Vanilla JavaScript** (JS version)
