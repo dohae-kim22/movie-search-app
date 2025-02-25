@@ -1,7 +1,5 @@
 import Store from "../core/store";
 
-const { APIKEY } = process.env;
-
 const store = new Store({
   searchText: "",
   page: 1,
@@ -22,9 +20,13 @@ export async function searchMovies(page) {
   }
 
   try {
-    const res = await fetch(
-      `https://www.omdbapi.com/?apikey=${APIKEY}&s=${store.state.searchText}&page=${page}`
-    );
+    const res = await fetch("/api/movie", {
+      method: "POST",
+      body: JSON.stringify({
+        title: store.state.searchText,
+        page,
+      }),
+    });
     const { Search, totalResults, Response, Error } = await res.json();
 
     if (Response === "True") {
@@ -44,9 +46,12 @@ export async function searchMovies(page) {
 
 export async function getMovieDetails(id) {
   try {
-    const res = await fetch(
-      `https://www.omdbapi.com/?apikey=${APIKEY}&i=${id}&plot=full`
-    );
+    const res = await fetch("/api/movie", {
+      method: "POST",
+      body: JSON.stringify({
+        id,
+      }),
+    });
     store.state.movie = await res.json();
   } catch (error) {
     console.log("getMovieDetails error : ", error);
