@@ -1,8 +1,15 @@
-export default class Store {
-  constructor(state) {
-    this.state = {};
-    this.observers = {};
+interface IObservers {
+  [key: string]: ISubscribeCallback[];
+}
 
+interface ISubscribeCallback {
+  (arg: unknown): void;
+}
+
+export default class Store<S> {
+  public state = {} as S;
+  private observers = {} as IObservers;
+  constructor(state: S) {
     // Iterate through each state and set up getters and setters
     for (const key in state) {
       Object.defineProperty(this.state, key, {
@@ -17,10 +24,9 @@ export default class Store {
     }
   }
   // Method to subscribe to state changes
-  subscribe(key, callback) {
-    if (!Array.isArray(this.observers[key])) {
-      this.observers[key] = [];
-    }
-    this.observers[key].push(callback);
+  subscribe(key: string, callback: ISubscribeCallback) {
+    Array.isArray(this.observers[key])
+      ? this.observers[key].push(callback)
+      : (this.observers[key] = [callback]);
   }
 }

@@ -1,7 +1,10 @@
 import Component from "../core/component";
+import { ISimpleMovie } from "../store/movie";
 
 export default class MovieItem extends Component {
-  constructor(props) {
+  public props!: ISimpleMovie;
+
+  constructor(props: ISimpleMovie) {
     super({ props, tagName: "a" });
   }
 

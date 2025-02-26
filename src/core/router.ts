@@ -1,4 +1,15 @@
-export default function createRouter(routes) {
+import Component from "./component";
+
+interface IRoute {
+  path: string;
+  component: typeof Component;
+}
+
+interface IQuery {
+  [key: string]: string;
+}
+
+export default function createRouter(routes: IRoute[]) {
   return function () {
     window.addEventListener("popstate", () => {
       routeRender(routes);
@@ -7,7 +18,7 @@ export default function createRouter(routes) {
   };
 }
 
-function routeRender(routes) {
+function routeRender(routes: IRoute[]) {
   if (!location.hash) {
     history.replaceState(null, "", "/#/");
   }
@@ -19,15 +30,17 @@ function routeRender(routes) {
     const [key, value] = cur.split("=");
     acc[key] = value;
     return acc;
-  }, {});
+  }, {} as IQuery);
   history.replaceState(query, ""); // Save query to the browser history state
 
   // Find the current route that matches the hash and render
   const currentRoute = routes.find((route) =>
     new RegExp(`${route.path}/?$`).test(hash)
   );
-  routerView.innerHTML = "";
-  routerView.append(new currentRoute.component().el);
+  if (routerView) {
+    routerView.innerHTML = "";
+    currentRoute && routerView.append(new currentRoute.component().el);
+  }
 
   // Reset scroll position after route change
   window.scrollTo(0, 0);

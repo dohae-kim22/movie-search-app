@@ -1,7 +1,17 @@
 import Component from "../core/component";
 import movieStore from "../store/movie";
 
+interface IState {
+  [key: string]: unknown;
+  menus: {
+    name: string;
+    href: string;
+  }[];
+}
+
 export default class Header extends Component {
+  public state!: IState;
+
   constructor() {
     super({
       tagName: "header",
@@ -31,7 +41,7 @@ export default class Header extends Component {
     if (recentMovieId) {
       this.state.menus.find(
         (menu) => menu.name === "Movie"
-      ).href = `#/movie?id=${recentMovieId}`;
+      )!.href = `#/movie?id=${recentMovieId}`;
     }
     this.el.classList.add("header");
     this.el.innerHTML = /* html */ `
